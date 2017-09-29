@@ -1,0 +1,16 @@
+#java
+*.class
+*.log
+*.ctxt
+.mtj.tmp/
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+#web
+target/
+#idea
+.idea/
+*.iml
