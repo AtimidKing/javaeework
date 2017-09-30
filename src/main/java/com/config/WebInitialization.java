@@ -1,6 +1,7 @@
-package com.work1.config;
+package com.config;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;
@@ -26,6 +27,14 @@ public class WebInitialization extends AbstractAnnotationConfigDispatcherServlet
 
     @Override
     protected Filter[] getServletFilters() {
-        return new Filter[]{new CharacterEncodingFilter("UTF-8")};
+        //    @Override
+//    protected Filter[] getServletFilters() {
+//        DelegatingFilterProxy delegatingFilterProxy=new DelegatingFilterProxy("shiroFilter");
+//        delegatingFilterProxy.setTargetFilterLifecycle(true);
+//        return new Filter[]{delegatingFilterProxy};
+//    }
+        DelegatingFilterProxy delegatingFilterProxy=new DelegatingFilterProxy("shiroFilter");
+        delegatingFilterProxy.setTargetFilterLifecycle(true);
+        return new Filter[]{new CharacterEncodingFilter("UTF-8",true),delegatingFilterProxy};
     }
 }

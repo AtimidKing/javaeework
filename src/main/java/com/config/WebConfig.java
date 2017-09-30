@@ -1,4 +1,4 @@
-package com.work1.config;
+package com.config;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -18,7 +18,7 @@ import org.thymeleaf.templatemode.TemplateMode;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan
+@ComponentScan("com.*.controller")
 public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware{
     private ApplicationContext applicationContext;
 
@@ -66,6 +66,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
     public ThymeleafViewResolver viewResolver(){
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
+        viewResolver.setCharacterEncoding("UTF-8");
         return viewResolver;
     }
 
